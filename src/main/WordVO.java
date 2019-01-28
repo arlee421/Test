@@ -2,6 +2,7 @@ package main;
 
 public class WordVO {
 
+	
 	private String word;
 	private String meaning;
 	
@@ -17,6 +18,7 @@ public class WordVO {
 	}
 	
 	public String setWord() {
+		
 		return word;
 	}
 	
@@ -27,5 +29,9 @@ public class WordVO {
 	public String setMeaning() {
 		return meaning;
 	}
+
+
+
+
 	
 }

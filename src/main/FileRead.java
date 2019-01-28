@@ -3,20 +3,17 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Scanner;
 import java.util.StringTokenizer;
 
 public class FileRead implements Action{
 
 
-	public void execute(Scanner sc) {
+	public void execute() {
 		
 		FileInputStream fi=null;
 		InputStreamReader isr=null;
 		BufferedReader bfr=null;
 		StringTokenizer st=null;
-		
-//		WordVO unit=new WordVO(word,meaning);
 		
 		try {
 			fi=new FileInputStream("JapanaseWords.txt");
@@ -26,12 +23,12 @@ public class FileRead implements Action{
 			String str=null;
 			while((str=bfr.readLine())!=null) {
 		
-				st=new StringTokenizer(str,",");
+				st=new StringTokenizer(str,".");
 				
 				String word= st.nextToken();
 				String  meaning= st.nextToken();
 				WordVO unit=new WordVO(word,meaning);
-				addWord2(unit);
+				addWord(unit);
 				}
 			
 		}
@@ -51,17 +48,17 @@ public class FileRead implements Action{
 		}
 	}
 	
-		private void addWord2(WordVO unit) {
-			WordVO[]temp=new WordVO[WordMain.unit.length+1];
-			for(int i=0;i<WordMain.unit.length;i++)
+		private void addWord(WordVO unit) {
+			WordVO[]temp=new WordVO[MainApp.unit.length+1];
+			for(int i=0;i<MainApp.unit.length;i++)
 			{
-				temp[i]=WordMain.unit[i];
+				temp[i]=MainApp.unit[i];
 				
 			}
 			temp[temp.length-1]=unit;
-			WordMain.unit=temp;
+			MainApp.unit=temp;
 		}
 
-	}
+}
 	
 

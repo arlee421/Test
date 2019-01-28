@@ -1,25 +1,29 @@
 
 package main;
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
 
+import start.ObjectProperty;
 
 public class FileWrite implements Action {
-
-	public void execute(Scanner sc) {
+	
+	public void execute() {
 		FileWriter fw=null;
 		try {
 			fw=new FileWriter("JapanaseWords.txt",false);
-	        WordVO[]unit=WordMain.unit;
-	        if(unit.length>=1) {
-	        	for(int i=0;i<unit.length;i++)
-	        		{
-			   String data = unit[i].getWord()+","+unit[i].getMeaning()+"\r\n";
-			   fw.write(data);
-	        		}
-	        	}
+	        			
+			{
+				int word_count = MainApp.wordTable.size();
+				int idx=  0;
+				ObjectProperty op = null;
+				for (idx = 0; idx < word_count; ++idx)
+				{
+					op = MainApp.wordTable.get(idx);
+								
+					String data=op.getWord()+"."+op.getMeaning()+"\r\n";
+					fw.write(data);
+				}
+			}       		
 			}	
 	catch(IOException e) {
 		e.printStackTrace();
@@ -31,8 +35,10 @@ public class FileWrite implements Action {
 		catch(IOException e) {
 			e.printStackTrace();
 			}
-		}
-	}	
-}
+		} 
+	}
+
+	}
+
 
 
